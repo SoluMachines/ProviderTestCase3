@@ -21,6 +21,7 @@ package solu.test;
 import android.annotation.TargetApi;
 import android.content.ContentProvider;
 import android.content.Context;
+import android.content.pm.ProviderInfo;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.database.ContentObserver;
@@ -29,6 +30,7 @@ import android.test.AndroidTestCase;
 import android.test.IsolatedContext;
 import android.test.RenamingDelegatingContext;
 import android.test.mock.MockContext;
+import android.text.TextUtils;
 
 import java.io.File;
 
@@ -134,8 +136,10 @@ public abstract class ProviderTestCase3<T extends ContentProvider> extends Andro
 		};
 
 		mProvider = mProviderClass.newInstance();
-		mProvider.attachInfo(mProviderContext, null);
 		assertNotNull(mProvider);
+		ProviderInfo providerInfo = new ProviderInfo();
+		providerInfo.authority = TextUtils.join(",", mProviderAuthority);
+		mProvider.attachInfo(mProviderContext, providerInfo);
 		for (String auth : mProviderAuthority) {
 			mResolver.addProvider(auth, getProvider());
 		}
