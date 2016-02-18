@@ -123,7 +123,7 @@ public final class MockObserverNode {
     }
 
     private void notifyMyObservers(boolean leaf, ContentObserver observer,
-            boolean selfNotify) {
+            boolean selfNotify, Uri uri) {
         int N = mObservers.size();
         for (int i = 0; i < N; i++) {
             MockObserverEntry entry = mObservers.get(i);
@@ -136,7 +136,7 @@ public final class MockObserverNode {
 
             // Make sure the observer is interested in the notification
             if (leaf || (!leaf && entry.notifyForDescendents)) {
-                entry.observer.onChange(selfNotify);
+                entry.observer.onChange(selfNotify, uri);
             }
         }
     }
@@ -147,11 +147,11 @@ public final class MockObserverNode {
         int segmentCount = countUriSegments(uri);
         if (index >= segmentCount) {
             // This is the leaf node, notify all observers
-            notifyMyObservers(true, observer, selfNotify);
+            notifyMyObservers(true, observer, selfNotify, uri);
         } else if (index < segmentCount){
             segment = getUriSegment(uri, index);
             // Notify any observers at this level who are interested in descendents
-            notifyMyObservers(false, observer, selfNotify);
+            notifyMyObservers(false, observer, selfNotify, uri);
         }
 
         int N = mChildren.size();
