@@ -1,4 +1,5 @@
-package sk.m217.tests.utils;
+package solu.test;
+
 /*
  * Copyright (C) 2011 The Android Open Source Project
  *
@@ -105,7 +106,7 @@ public abstract class ProviderTestCase3<T extends ContentProvider> extends Andro
 	 * Sets up the environment for the test fixture.
 	 * <p>
 	 * Creates a new
-	 * {@link com.android.browser.tests.utils.MockContentResolver2}, a new IsolatedContext
+	 * {@link solu.test.MockContentResolver2}, a new IsolatedContext
 	 * that isolates the provider's file operations, and a new instance of
 	 * the provider under test within the isolated environment.
 	 * </p>

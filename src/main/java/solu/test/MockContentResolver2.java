@@ -1,4 +1,5 @@
-package sk.m217.tests.utils;
+package solu.test;
+
 /*
  * Copyright (C) 2011 The Android Open Source Project
  *

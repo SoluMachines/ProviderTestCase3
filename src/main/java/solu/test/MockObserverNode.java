@@ -1,4 +1,5 @@
-package sk.m217.tests.utils;
+package solu.test;
+
 /*
  * Copyright (C) 2011 The Android Open Source Project
  *
@@ -14,8 +15,6 @@ package sk.m217.tests.utils;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
 
 import java.util.ArrayList;
 
